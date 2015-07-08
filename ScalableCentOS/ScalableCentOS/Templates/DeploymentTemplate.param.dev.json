@@ -1,0 +1,36 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "newStorageAccountName": {
+            "value": "scalablecentos"
+        },
+        "adminUsername": {
+            "value": "PPadmin"
+        },
+        "dnsPrefixNameForPublicIP": {
+            "value": "centosdnsc"
+        },
+        "virtualNetworkName": {
+            "value": "scalablevnet"
+        },
+        "vmNamePrefix": {
+            "value": "scalablecentosVM"
+        },
+        "vmSize": {
+            "value": "Standard_A2"
+        },
+        "vmCount": {
+            "value": 2
+        },
+        "location": {
+            "value": "East US"
+        },
+        "OSVersion": {
+            "value": "7.0"
+        },
+        "adminPassword": {
+            "value": "This is a sentence!"
+        }
+    }
+}
