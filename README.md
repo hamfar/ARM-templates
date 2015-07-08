@@ -5,4 +5,4 @@ This repo contains Azure resource manager templates. These templates can be used
 
 | Type   |  Template Name   | Description     |
 |:------|:-----------------|:--------------------------------|
-|  | [ScalableCentos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-create-availability-set) | This template allows you to deploy CentOS virtual machines to scale and creates Raid0 from additional data disks|
+|  | [ScalableCentos](https://github.com/hamfar/ARM-templates/tree/master/ScalableCentOS) | This template allows you to deploy CentOS virtual machines to scale and creates Raid0 from additional data disks|
