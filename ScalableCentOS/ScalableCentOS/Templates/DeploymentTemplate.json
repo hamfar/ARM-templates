@@ -79,7 +79,7 @@
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
         "vmStorageAccountContainerName": "vhds",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-        "ScriptUrl": "https://github.com/hamfar/ARM-templates/tree/master/ScalableCentOS/ScalableCentOS/Scripts"
+        "ScriptUrl": "https://raw.githubusercontent.com/hamfar/ARM-templates/master/ScalableCentOS/ScalableCentOS/Scripts/vm-disk-utils-0.1.sh"
     },
     "resources": [
         {
@@ -261,7 +261,7 @@
                 "typeHandlerVersion": "1.2",
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/hamfar/ARM-templates/master/ScalableCentOS/ScalableCentOS/Scripts/vm-disk-utils-0.1.sh"
+                        "[variables('scriptUrl')]"
                     ],
                     "commandToExecute": "bash vm-disk-utils-0.1.sh -s"
                 }
