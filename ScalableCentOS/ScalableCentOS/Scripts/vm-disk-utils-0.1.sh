@@ -42,7 +42,7 @@ help()
     echo "Usage: $(basename $0) [-b data_base] [-h] [-s]"
     echo ""
     echo "Options:"
-    echo "   -b         base directory for mount points (default: /datadisks)"
+    echo "   -b         base directory for mount points (default: /datadisk)"
     echo "   -h         this help message"
     echo "   -s         create a striped RAID array (no redundancy)"
 }
@@ -65,7 +65,29 @@ fi
 BLACKLIST="/dev/sda|/dev/sdb"
  
 # Base path for data disk mount points
-DATA_BASE="/datadisks"
+DATA_BASE="/datadisk"
+
+#Modify Sudoers file to not require tty for shell script execution on CentOS
+# sudo sed -i '/Defaults[[:space:]]\+requiretty/s/^/#/' /etc/sudoers
+
+# Enable write access to the mongodb.repo and configure it for installation
+
+#sudo chmod 777 /etc/yum.repos.d/mongodb.repo
+touch /etc/yum.repos.d/mongodb.repo
+echo "[mongodb-org-3.0]" >> /etc/yum.repos.d/mongodb.repo
+echo "name=MongoDB Repository" >> /etc/yum.repos.d/mongodb.repo
+echo "baseurl=http://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.0/x86_64/" >> /etc/yum.repos.d/mongodb.repo
+echo "gpgcheck=0" >> /etc/yum.repos.d/mongodb.repo
+echo "enabled=1" >> /etc/yum.repos.d/mongodb.repo
+
+# Install updates
+#yum -y update
+
+#Install Mongo DB
+yum install -y mongo-org
+ 
+ 
+ 
  
 while getopts b:sh optname; do
     log "Option $optname set with value ${OPTARG}"
