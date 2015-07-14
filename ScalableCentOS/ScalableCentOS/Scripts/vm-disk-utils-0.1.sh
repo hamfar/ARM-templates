@@ -195,7 +195,7 @@ add_to_fstab() {
     then
         echo "Not adding ${UUID} to fstab again (it's already there!)"
     else
-        LINE="UUID=\"${UUID}\"\t${MOUNTPOINT}\text4\tnoatime,nodiratime,nodev,noexec,nosuid\t1 2"
+        LINE="UUID=\"${UUID}\"\t${MOUNTPOINT}\txfs\tnoatime,nodiratime,nodev,noexec,nosuid\t1 2"
         echo -e "${LINE}" >> /etc/fstab
     fi
 }
@@ -258,7 +258,7 @@ scan_partition_format()
             echo "Creating filesystem on ${PARTITION}."
     #        echo "Press Ctrl-C if you don't want to destroy all data on ${PARTITION}"
     #        sleep 10
-            mkfs -j -t ext4 ${PARTITION}
+            mkfs -j -t xfs ${PARTITION}
         fi
         MOUNTPOINT=$(get_next_mountpoint)
         echo "Next mount point appears to be ${MOUNTPOINT}"
@@ -307,7 +307,7 @@ create_striped_volume()
     [ -d "${MOUNTPOINT}" ] || mkdir -p "${MOUNTPOINT}"
  
     #Make a file system on the new device
-    mkfs -t ext4 "${MDDEVICE}"
+    mkfs -t xfs "${MDDEVICE}"
  
     read UUID FS_TYPE < <(blkid -u filesystem ${MDDEVICE}|awk -F "[= ]" '{print $3" "$5}'|tr -d "\"")
  
