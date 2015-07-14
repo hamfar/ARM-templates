@@ -258,7 +258,7 @@ scan_partition_format()
             echo "Creating filesystem on ${PARTITION}."
     #        echo "Press Ctrl-C if you don't want to destroy all data on ${PARTITION}"
     #        sleep 10
-            mkfs -j -t xfs ${PARTITION}
+            mkfs -j -t ext4 ${PARTITION}
         fi
         MOUNTPOINT=$(get_next_mountpoint)
         echo "Next mount point appears to be ${MOUNTPOINT}"
@@ -307,7 +307,7 @@ create_striped_volume()
     [ -d "${MOUNTPOINT}" ] || mkdir -p "${MOUNTPOINT}"
  
     #Make a file system on the new device
-    mkfs -t xfs "${MDDEVICE}"
+    mkfs -t ext4 "${MDDEVICE}"
  
     read UUID FS_TYPE < <(blkid -u filesystem ${MDDEVICE}|awk -F "[= ]" '{print $3" "$5}'|tr -d "\"")
  
