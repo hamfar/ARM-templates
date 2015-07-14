@@ -307,7 +307,7 @@ create_striped_volume()
     [ -d "${MOUNTPOINT}" ] || mkdir -p "${MOUNTPOINT}"
  
     #Make a file system on the new device
-    mkfs -t ext4 "${MDDEVICE}"
+    mkfs -t xfs "${MDDEVICE}"
  
     read UUID FS_TYPE < <(blkid -u filesystem ${MDDEVICE}|awk -F "[= ]" '{print $3" "$5}'|tr -d "\"")
  
