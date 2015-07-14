@@ -82,12 +82,12 @@ echo "gpgcheck=0" >> /etc/yum.repos.d/mongodb.repo
 echo "enabled=1" >> /etc/yum.repos.d/mongodb.repo
 
 # Install updates
-yum -y update
+#yum -y update
 
 #Install Mongo DB
 yum install -y mongodb-org
 
-echo "exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools" >> /etc/yum.conf 
+#echo "exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools" >> /etc/yum.conf 
  
  
  
