@@ -77,7 +77,7 @@ touch /etc/yum.repos.d/mongodb.repo
 echo "[mongodb-org-3.0]" >> /etc/yum.repos.d/mongodb.repo
 echo "name=MongoDB Repository" >> /etc/yum.repos.d/mongodb.repo
 #$releasever is showing blank
-echo "baseurl=http://repo.mongodb.org/yum/redhat/7/mongodb-org/3.0/x86_64/" >> /etc/yum.repos.d/mongodb.repo
+echo "baseurl=http://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.0/x86_64/" >> /etc/yum.repos.d/mongodb.repo
 echo "gpgcheck=0" >> /etc/yum.repos.d/mongodb.repo
 echo "enabled=1" >> /etc/yum.repos.d/mongodb.repo
 
@@ -85,8 +85,9 @@ echo "enabled=1" >> /etc/yum.repos.d/mongodb.repo
 yum -y update
 
 #Install Mongo DB
-yum install -y mongo-org
- 
+yum install -y mongodb-org
+
+echo "exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools" >> /etc/yum.conf 
  
  
  
